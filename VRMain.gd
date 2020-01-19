@@ -2,7 +2,6 @@ extends Spatial
 
 # Code from https://docs.godotengine.org/en/3.1/tutorials/vr/vr_starter_tutorial.html
 func _ready():
-	return
 	var VR = ARVRServer.find_interface("OpenVR")
 	if VR and VR.initialize():
 		get_viewport().arvr = true
