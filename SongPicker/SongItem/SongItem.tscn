@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SongPicker/placeholder.jpg" type="Texture" id=1]
+[ext_resource path="res://SongPicker/SongItem/SongItem.gd" type="Script" id=2]
+[ext_resource path="res://Theme/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Theme/Fonts/Oswald/Oswald-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_color = Color( 0.713726, 0.713726, 0.713726, 1 )
+font_data = ExtResource( 4 )
+
+[node name="SongItem" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1616.0
+margin_bottom = -984.0
+theme = ExtResource( 3 )
+custom_constants/separation = 19
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoverArt" type="TextureRect" parent="."]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+rect_clip_content = true
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Labels" type="VBoxContainer" parent="."]
+margin_left = 115.0
+margin_right = 244.0
+margin_bottom = 96.0
+alignment = 1
+
+[node name="SongName" type="Label" parent="Labels"]
+margin_top = 13.0
+margin_right = 129.0
+margin_bottom = 49.0
+text = "Song title here"
+
+[node name="AuthorName" type="Label" parent="Labels"]
+margin_top = 53.0
+margin_right = 129.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.576471, 0.576471, 0.576471, 1 )
+text = "Daft Punk"

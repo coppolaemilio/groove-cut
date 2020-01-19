@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Groove Cut"
+run/main_scene="res://VRMain.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -29,6 +30,11 @@ window/size/height=1080
 window/size/test_width=960
 window/size/test_height=540
 
+[gdnative]
+
+singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib" ]
+
 [rendering]
 
+quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"

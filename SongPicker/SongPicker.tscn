@@ -2,19 +2,12 @@
 
 [ext_resource path="res://SongPicker/SongPicker.gd" type="Script" id=1]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Control" type="CanvasLayer"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ItemList" type="ItemList" parent="."]
-margin_left = 31.0
-margin_top = 42.0
-margin_right = 381.0
-margin_bottom = 443.0
+[node name="SongList" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,4 +18,3 @@ margin_top = 49.0
 margin_right = 631.0
 margin_bottom = 272.0
 stretch_mode = 1
-[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]

@@ -1,7 +1,7 @@
-extends Control
+extends CanvasLayer
 
 var songs_dir = 'user://'
-
+var song_item = load("res://SongPicker/SongItem/SongItem.tscn")
 var discovered_songs = []
 
 func _ready():
@@ -18,17 +18,20 @@ func _ready():
 		var data = parse_json(result)
 		print(data['_songAuthorName'])
 		var item_name = data['_songName'] + " by " + data['_songAuthorName']
-		$ItemList.add_item(item_name, null, true)
 		var sprite = crate_sprite(songs_dir + dir + '/' + data['_coverImageFilename'])
 		
 		discovered_songs.append([data, songs_dir + dir, sprite])
+		
+		var item = song_item.instance()
+		item.init(data, sprite)
+		$SongList.add_child(item)
 		$Cover.texture = sprite
 		
 		print(songs_dir + dir + '/' + data['_coverImageFilename'])
 
 
-func _on_ItemList_item_selected(index):
-	$Cover.texture = discovered_songs[index][2]
+#func _on_ItemList_item_selected(index):
+#	$Cover.texture = discovered_songs[index][2]
 
 
 func crate_sprite(path):
