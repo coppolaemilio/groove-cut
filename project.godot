@@ -18,6 +18,17 @@ _global_script_class_icons={
 config/name="Groove Cut"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://global.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/test_width=960
+window/size/test_height=540
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
