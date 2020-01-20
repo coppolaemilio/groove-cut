@@ -36,5 +36,6 @@ singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib" ]
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
