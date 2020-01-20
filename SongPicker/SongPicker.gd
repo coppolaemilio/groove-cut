@@ -12,8 +12,8 @@ func _ready():
 		file.open(info_path, File.READ)
 		var result = ''
 		while not file.eof_reached():
-		    var line = file.get_line()
-		    result += line
+			var line = file.get_line()
+			result += line
 		file.close()
 		var data = parse_json(result)
 		print(data['_songAuthorName'])
