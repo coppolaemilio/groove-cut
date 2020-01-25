@@ -14,15 +14,29 @@ enum NOTE_DIRECTION {
 
 var directionEnumSize = 9;
 
-var Note = load("res://GameProps/Note.tscn")
+var ns = 2.2 # Note spacing
+var positions = [
+	[Vector3(-ns,0,0), Vector3(0,0,0), Vector3(ns,0,0), Vector3(ns*2,0,0)],
+	[Vector3(-ns,-ns,0), Vector3(0,-ns,0), Vector3(ns,-ns,0), Vector3(ns*2,-ns,0)],
+	[Vector3(-ns,ns,0), Vector3(0,ns,0), Vector3(ns,ns,0), Vector3(ns*2,ns,0)]
+]
 
-var current_song = "/MapExampleCalibration/EasyStandard.dat"
+var Note = load("res://GameProps/Note.tscn")
+var current_song = "./MapExampleCalibration/EasyStandard.dat"
+var song_data = {}
+var note_index = 0
+var notes_on_track = []
+
+func _ready():
+	var song_data = global.read_json_file(current_song)
+	for note in song_data['_notes']:
+		print(note)
+		notes_on_track.append(positions[note['_lineLayer']][note['_lineIndex']])
+	$Timer.start(2)
 
 func _on_Timer_timeout():
 	var new_note = Note.instance()
 	var current_direction = randi()%directionEnumSize
-	
-	current_direction = NOTE_DIRECTION.UpRight;
 	
 	match current_direction:
 		NOTE_DIRECTION.Down:
@@ -47,4 +61,6 @@ func _on_Timer_timeout():
 	if current_direction != NOTE_DIRECTION.All:
 		new_note.get_node('AllDirectionsNote').visible = false
 	
+	new_note.translate(notes_on_track[note_index])
+	note_index += 1
 	get_parent().get_node('Notes').add_child(new_note)

@@ -1,6 +1,6 @@
 extends Spatial
 
-var vr_mode = false
+var vr_mode = true
 
 func _ready():
 	if vr_mode:

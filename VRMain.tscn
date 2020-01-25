@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://VRMain.gd" type="Script" id=1]
 [ext_resource path="res://addons/godot-openvr/scenes/ovr_first_person.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SongPlayer/SongPlayer.gd" type="Script" id=4]
 [ext_resource path="res://GameProps/Cutter.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Other/NotesPositions.gd" type="Script" id=6]
 
-[sub_resource type="ProceduralSky" id=4]
+[sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0862745, 0.0156863, 0.129412, 1 )
 sky_horizon_color = Color( 0.556863, 0.556863, 0.556863, 1 )
 ground_bottom_color = Color( 0, 0, 0, 1 )
@@ -14,9 +13,9 @@ ground_horizon_color = Color( 0.152941, 0.32549, 0.313726, 1 )
 sun_latitude = -0.38
 sun_longitude = 25.34
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 4 )
+background_sky = SubResource( 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
@@ -42,21 +41,19 @@ transform = Transform( 0.2, 0, 0, 0, 0.000240818, 0.2, 0, -0.2, 0.000240818, 0.0
 transform = Transform( 0.892641, 0.0666511, 0.445814, -0.450769, 0.131987, 0.882829, 0, -0.989008, 0.147861, 5.90856, 7.09578, -0.912388 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 5 )
+environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.733469, 0, -0.679723, 0, 1, 0, 0.679723, 0, 0.733469, -2.38208, 1.59511, -0.541999 )
 
 [node name="Notes" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52399, -3.88769 )
-script = ExtResource( 6 )
 
 [node name="SongPlayer" type="Node" parent="."]
 script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="SongPlayer"]
 wait_time = 0.5
-autostart = true
 [connection signal="timeout" from="SongPlayer/Timer" to="SongPlayer" method="_on_Timer_timeout"]
 
 [editable path="OVRFirstPerson"]
