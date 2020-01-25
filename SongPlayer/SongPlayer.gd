@@ -1,6 +1,6 @@
 extends Node
 
-enum DIRECTION {
+enum NOTE_DIRECTION {
 	Down,
 	Up,
 	Left,
@@ -22,29 +22,29 @@ func _on_Timer_timeout():
 	var new_note = Note.instance()
 	var current_direction = randi()%directionEnumSize
 	
-	current_direction = DIRECTION.UpRight;
+	current_direction = NOTE_DIRECTION.UpRight;
 	
 	match current_direction:
-		DIRECTION.Down:
+		NOTE_DIRECTION.Down:
 			new_note.rotate_z(deg2rad(0.0))
-		DIRECTION.Up:
+		NOTE_DIRECTION.Up:
 			new_note.rotate_z(deg2rad(180.0))
-		DIRECTION.Left:
+		NOTE_DIRECTION.Left:
 			new_note.rotate_z(deg2rad(-90.0))
-		DIRECTION.Right:
+		NOTE_DIRECTION.Right:
 			new_note.rotate_z(deg2rad(90.0))
-		DIRECTION.DownLeft:
+		NOTE_DIRECTION.DownLeft:
 			new_note.rotate_z(deg2rad(-45.0))
-		DIRECTION.DownRight:
+		NOTE_DIRECTION.DownRight:
 			new_note.rotate_z(deg2rad(45.0))
-		DIRECTION.UpLeft:
+		NOTE_DIRECTION.UpLeft:
 			new_note.rotate_z(deg2rad(-135.0))
-		DIRECTION.UpRight:
+		NOTE_DIRECTION.UpRight:
 			new_note.rotate_z(deg2rad(135.0))
-		DIRECTION.All:
+		NOTE_DIRECTION.All:
 			new_note.get_node('DirectionalNote').visible = false
 		
-	if current_direction != DIRECTION.All:
+	if current_direction != NOTE_DIRECTION.All:
 		new_note.get_node('AllDirectionsNote').visible = false
 	
 	get_parent().get_node('Notes').add_child(new_note)
