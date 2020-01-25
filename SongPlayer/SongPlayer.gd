@@ -26,13 +26,26 @@ var current_song = "./MapExampleCalibration/EasyStandard.dat"
 var song_data = {}
 var note_index = 0
 var notes_on_track = []
+var batches = []
 
 func _ready():
 	var song_data = global.read_json_file(current_song)
+	var batch_index = 0
+	var current_batch = []
+	
 	for note in song_data['_notes']:
+		if note['_time'] != batch_index:
+			batches.append(current_batch)
+			current_batch = []
+			batch_index = note['_time']
+			print(batch_index)
+		else:
+			current_batch.append(note)
 		print(note)
 		notes_on_track.append(positions[note['_lineLayer']][note['_lineIndex']])
-	$Timer.start(2)
+	
+	print(batches)
+	#$Timer.start(2)
 
 func _on_Timer_timeout():
 	var new_note = Note.instance()
