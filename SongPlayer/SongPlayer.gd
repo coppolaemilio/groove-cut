@@ -9,8 +9,6 @@ func _on_Timer_timeout():
 	var directions = ['up', 'down', 'left', 'right', 'all']
 	var current_direction = directions[randi()%directions.size()]
 	
-	current_direction = 'all'
-	
 	match current_direction:
 		'up':
 			new_note.rotate_z(deg2rad(180.0))
