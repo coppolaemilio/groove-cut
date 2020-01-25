@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Other/Placeholder.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0.054902, 0.054902, 1 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+transform = Transform( 0.319576, 0, 0, 0, 0.29305, 0, 0, 0, 0.322515, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="CSGMesh"]
+transform = Transform( -7.73978e-09, 0, -1.0092, 0, 0.198815, 0, 0.175452, 0, -4.37114e-08, 0.00811418, -0.963843, 0.977595 )
+mesh = SubResource( 2 )
+material = SubResource( 3 )

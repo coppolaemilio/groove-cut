@@ -24,5 +24,7 @@ func open_working_directory():
 	match OS.get_name():
 		'OSX':
 			OS.execute('open', [OS.get_user_data_dir()], false)
+		'Windows':
+			OS.execute('open', [OS.get_user_data_dir()], false)
 		'_':
 			print('[!] Can\'t detect OS')
