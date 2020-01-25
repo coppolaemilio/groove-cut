@@ -16,7 +16,7 @@ var directionEnumSize = 9;
 
 var Note = load("res://GameProps/Note.tscn")
 
-var current_song = []
+var current_song = "/MapExampleCalibration/EasyStandard.dat"
 
 func _on_Timer_timeout():
 	var new_note = Note.instance()

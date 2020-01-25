@@ -19,3 +19,14 @@ func list_dir(path):
 	dir.list_dir_end()
 
 	return files
+
+func read_json_file(path):
+	var file = File.new()
+	file.open(path, File.READ)
+	var result = ''
+	while not file.eof_reached():
+		var line = file.get_line()
+		result += line
+	file.close()
+	var data = parse_json(result)
+	return data
