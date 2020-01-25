@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://VRMain.gd" type="Script" id=1]
 [ext_resource path="res://addons/godot-openvr/scenes/ovr_first_person.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SongPicker/SongPicker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SongPlayer/SongPlayer.gd" type="Script" id=4]
+[ext_resource path="res://GameProps/Cutter.tscn" type="PackedScene" id=5]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -38,6 +39,15 @@ height = 0.140563
 depth = 4.22789
 
 [node name="OVRFirstPerson" parent="." instance=ExtResource( 2 )]
+
+[node name="Cutter2" parent="OVRFirstPerson/Left_Hand" index="0" instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.000240818, 0.2, 0, -0.2, 0.000240818, 0, -0.008, 0.09 )
+
+[node name="Controller_mesh" parent="OVRFirstPerson/Left_Hand" index="1"]
+visible = false
+
+[node name="Cutter" parent="OVRFirstPerson/Right_Hand" index="1" instance=ExtResource( 5 )]
+transform = Transform( 0.2, 0, 0, 0, 0.000240818, 0.2, 0, -0.2, 0.000240818, 0.006, -0.008, 0.09 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 2.06419, 0, 0, 0, 1.19225, 0, 0, 0, 0.558011, 0, 1.64161, -2.62718 )
@@ -75,3 +85,9 @@ script = ExtResource( 4 )
 wait_time = 0.5
 autostart = true
 [connection signal="timeout" from="SongPlayer/Timer" to="SongPlayer" method="_on_Timer_timeout"]
+
+[editable path="OVRFirstPerson"]
+
+[editable path="OVRFirstPerson/Left_Hand"]
+
+[editable path="OVRFirstPerson/Right_Hand"]
