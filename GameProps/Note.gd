@@ -1,9 +1,8 @@
 extends Spatial
 
-
-var direction = ['down']
+var direction = 'down'
 var pos = Vector3(0,0,0)
-var speed = 0.1
+var speed = 0.6
 
 func _ready():
 	pass # Replace with function body.
