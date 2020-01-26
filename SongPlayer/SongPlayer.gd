@@ -12,8 +12,6 @@ enum NOTE_DIRECTION {
 	All
 }
 
-var directionEnumSize = 9;
-
 var ns = 2.2 # Note spacing
 var positions = [
 	[Vector3(-ns,0,0), Vector3(0,0,0), Vector3(ns,0,0), Vector3(ns*2,0,0)],
@@ -52,8 +50,8 @@ func _ready():
 func spawn_note(note):
 	var new_note = Note.instance()
 	get_parent().get_node('Notes').add_child(new_note)
-	#var current_direction = randi()%directionEnumSize
-	var current_direction = note['_cutDirection']
+	#var current_direction = randi()%NOTE_DIRECTION.size()
+	var current_direction = int(note['_cutDirection'])
 	var type = note['_type'] # 0 Red, 1 Blue
 	
 	match current_direction:
