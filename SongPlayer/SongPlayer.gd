@@ -55,22 +55,22 @@ func spawn_note(note):
 	var type = note['_type'] # 0 Red, 1 Blue
 	
 	match current_direction:
-		NOTE_DIRECTION.Down:
-			new_note.rotate_z(deg2rad(0.0))
 		NOTE_DIRECTION.Up:
 			new_note.rotate_z(deg2rad(180.0))
+		NOTE_DIRECTION.Down:
+			new_note.rotate_z(deg2rad(0.0))
 		NOTE_DIRECTION.Left:
 			new_note.rotate_z(deg2rad(-90.0))
 		NOTE_DIRECTION.Right:
 			new_note.rotate_z(deg2rad(90.0))
-		NOTE_DIRECTION.DownLeft:
-			new_note.rotate_z(deg2rad(-45.0))
-		NOTE_DIRECTION.DownRight:
-			new_note.rotate_z(deg2rad(45.0))
 		NOTE_DIRECTION.UpLeft:
 			new_note.rotate_z(deg2rad(-135.0))
 		NOTE_DIRECTION.UpRight:
 			new_note.rotate_z(deg2rad(135.0))
+		NOTE_DIRECTION.DownLeft:
+			new_note.rotate_z(deg2rad(-45.0))
+		NOTE_DIRECTION.DownRight:
+			new_note.rotate_z(deg2rad(45.0))
 		NOTE_DIRECTION.All:
 			new_note.get_node('DirectionalNote').visible = false
 		
