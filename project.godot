@@ -34,6 +34,11 @@ window/size/test_height=540
 
 singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib" ]
 
+[layer_names]
+
+3d_physics/layer_1="Default"
+3d_physics/layer_2="TestCutter"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
