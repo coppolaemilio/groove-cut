@@ -11,7 +11,7 @@ var cutterKinematic
 var pos = Vector3(0,0,0)
 var speed = 0.6
 var cutter_speed = 5
-var cut_separation_force = 0.3;
+var cut_separation_force = 1.5;
 
 var start_cut = false
 var is_cut = false
@@ -84,8 +84,6 @@ func _process(delta):
 					var collision_position_local = to_local(collision_info.position)
 					collision_position_local.z = 0
 					
-					print(collision_position_local)
-					
 					cut_note(collision_position_local, cutter_direction)
 
 func cut_note(cut_point, cut_direction):
@@ -133,8 +131,7 @@ func instance_and_init_note_segment(cut_point, cut_direction, isSubtraction):
 	desiredPos.z = 1
 	intersection_box.translation = desiredPos
 	
-	var rotate_z_radians = atan2(-cut_direction.x, cut_direction.y)
-	print(rad2deg(rotate_z_radians))
-	intersection_box.rotate_z(rotate_z_radians)
+	var rotate_z_radians = atan2(cut_direction.x, cut_direction.y)
+	intersection_box.rotate_z(-(note_segment.rotation.z + rotate_z_radians))
 	
 	rigidBody.apply_impulse(Vector3(0,0,0), -transform.basis.x * impulse_force_magnitude)

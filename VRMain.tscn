@@ -19,7 +19,6 @@ background_sky = SubResource( 1 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
-vr_mode = true
 
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0715855, 0 )
