@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GameProps/NoteSegment.gd" type="Script" id=1]
+
+[node name="NoteSegment" type="Spatial"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="DirectionalNote" type="RigidBody" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="DirectionalNote"]
+
+[node name="SubstractionBoxRight" type="CSGBox" parent="DirectionalNote/CSGBox"]
+transform = Transform( 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, 1.603, 0.475876, 0 )
+operation = 2
+height = 2.60308
+depth = 3.92721
+
+[node name="SubstractionBoxLeft" type="CSGBox" parent="DirectionalNote/CSGBox"]
+transform = Transform( 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0, 1, -1.6, 0.475876, 0 )
+operation = 2
+height = 2.60308
+depth = 3.92721
+
+[node name="IntersectionBox" type="CSGPolygon" parent="DirectionalNote/CSGBox"]
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 1, 0, -1, 2 )
+operation = 1
+polygon = PoolVector2Array( 0, -1, 0, 1, 1, 1, 1, -1 )
+depth = 3.92721
+
+[node name="AllDirectionsNote" type="RigidBody" parent="."]
+visible = false
+
+[node name="CSGBox" type="CSGBox" parent="AllDirectionsNote"]
+
+[node name="IntersectionBox" type="CSGPolygon" parent="AllDirectionsNote/CSGBox"]
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 1, 0, -1, 2 )
+operation = 1
+polygon = PoolVector2Array( 0, -1, 0, 1, 1, 1, 1, -1 )
+depth = 3.92721
