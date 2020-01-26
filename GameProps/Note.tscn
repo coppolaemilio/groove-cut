@@ -1,57 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://GameProps/Note.gd" type="Script" id=1]
-
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 1, 0.8, 1 )
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.4, 0.2, 1 )
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.2, 0.2, 1 )
-
-[sub_resource type="BoxShape" id=4]
 
 [node name="Note" type="Spatial"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="DirectionalNote" type="KinematicBody" parent="."]
+collision_mask = 3
 
-[node name="CollisionShapeMain" type="CollisionShape" parent="DirectionalNote"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon" type="CollisionPolygon" parent="DirectionalNote"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+polygon = PoolVector2Array( -1, -1, -1, -0.6, -0.3, 1, 0.3, 1, 1, -0.6, 1, -1 )
 
-[node name="CollisionShapeLeft" type="CollisionShape" parent="DirectionalNote"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.8, 0 )
-shape = SubResource( 2 )
-
-[node name="CollisionShapeRight" type="CollisionShape" parent="DirectionalNote"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.8, 0 )
-shape = SubResource( 2 )
-
-[node name="CollisionShapeCenter" type="CollisionShape" parent="DirectionalNote"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0 )
-shape = SubResource( 3 )
-
-[node name="CSGBox" type="CSGBox" parent="DirectionalNote"]
-
-[node name="SubstractionBoxRight" type="CSGBox" parent="DirectionalNote/CSGBox"]
-transform = Transform( 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, 1.603, 0.475876, 0 )
-operation = 2
-height = 2.60308
-depth = 3.92721
-
-[node name="SubstractionBoxLeft" type="CSGBox" parent="DirectionalNote/CSGBox"]
-transform = Transform( 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0, 1, -1.6, 0.475876, 0 )
-operation = 2
-height = 2.60308
-depth = 3.92721
+[node name="CSGPolygon" type="CSGPolygon" parent="DirectionalNote"]
+use_collision = true
+polygon = PoolVector2Array( -1, -1, -1, -0.6, -0.3, 1, 0.3, 1, 1, -0.6, 1, -1 )
+depth = 2.0
 
 [node name="AllDirectionsNote" type="KinematicBody" parent="."]
+collision_mask = 3
 
-[node name="CollisionShapeMain" type="CollisionShape" parent="AllDirectionsNote"]
-shape = SubResource( 4 )
+[node name="CollisionPolygon" type="CollisionPolygon" parent="AllDirectionsNote"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+depth = 2.0
+polygon = PoolVector2Array( -1, -1, -1, 1, 1, 1, 1, -1 )
 
-[node name="CSGBox" type="CSGBox" parent="AllDirectionsNote"]
+[node name="CSGPolygon" type="CSGPolygon" parent="AllDirectionsNote"]
+polygon = PoolVector2Array( -1, -1, -1, 1, 1, 1, 1, -1 )
+depth = 2.0

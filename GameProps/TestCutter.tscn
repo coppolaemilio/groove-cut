@@ -1,20 +1,24 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="CylinderShape" id=1]
+radius = 0.01
+height = 3.0
 
 [node name="Cutter" type="Spatial"]
 
 [node name="CutterKinematic" type="KinematicBody" parent="."]
+collision_layer = 2
 
 [node name="CollisionShapeMain" type="CollisionShape" parent="CutterKinematic"]
-transform = Transform( 0.1, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 1 )
 
 [node name="CutterBlade" type="CSGCylinder" parent="CutterKinematic"]
-transform = Transform( 0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 2, 0 )
+transform = Transform( 0.03, 0, 0, 0, 1, 0, 0, 0, 0.03, 0, 2, 0 )
 height = 3.0
 sides = 16
 
 [node name="CutterHandle" type="CSGCylinder" parent="CutterKinematic"]
 transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
+visible = false
 sides = 16

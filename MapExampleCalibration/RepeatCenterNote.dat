@@ -1,0 +1,87 @@
+{
+  "_time": 80,
+  "_BPMChanges": [],
+  "_events": [],
+  "_notes": [
+    {
+      "_time": 0,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 5,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 10,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 15,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 20,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 25,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 30,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 35,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 40,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 45,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+	{
+      "_time": 50,
+      "_lineIndex": 0,
+      "_lineLayer": 0,
+      "_type": 0,
+      "_cutDirection": 8
+    },
+  ],
+  "_obstacles": [
+  ],
+  "_bookmarks": []
+}
