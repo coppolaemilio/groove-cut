@@ -84,11 +84,12 @@ func spawn_note(note):
 		new_note.get_node('AllDirectionsNote').visible = false
 	
 	if note['_type'] == 0: # 0 Red, 1 Blue
-		new_note.get_node('DirectionalNote/CSGBox').material_override = RedMaterial
-		new_note.get_node('AllDirectionsNote/CSGBox').material_override = RedMaterial
+		
+		new_note.get_node('DirectionalNote/CSGPolygon').material_override = RedMaterial
+		new_note.get_node('AllDirectionsNote/CSGPolygon').material_override = RedMaterial
 	else:
-		new_note.get_node('DirectionalNote/CSGBox').material_override = BlueMaterial
-		new_note.get_node('AllDirectionsNote/CSGBox').material_override = BlueMaterial
+		new_note.get_node('DirectionalNote/CSGPolygon').material_override = BlueMaterial
+		new_note.get_node('AllDirectionsNote/CSGPolygon').material_override = BlueMaterial
 	
 	
 	
