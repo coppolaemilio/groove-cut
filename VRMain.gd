@@ -1,6 +1,6 @@
 extends Spatial
 
-var vr_mode = false
+export var vr_mode = false
 
 func _ready():
 	if vr_mode:
