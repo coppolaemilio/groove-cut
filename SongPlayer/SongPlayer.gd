@@ -25,7 +25,7 @@ var RedMaterial = load("res://Theme/Materials/Red.tres")
 var BlueMaterial = load("res://Theme/Materials/Blue.tres")
 
 # Song
-var current_song = "./MapExampleCalibration/EasyStandard.dat"
+var current_song = "./MapExampleCalibration/Expert.dat"
 var song_data = {}
 var notes_on_track = []
 var batches = []
