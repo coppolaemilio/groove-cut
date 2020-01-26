@@ -53,7 +53,9 @@ func spawn_note(note):
 	#var current_direction = randi()%NOTE_DIRECTION.size()
 	var current_direction = int(note['_cutDirection'])
 	var type = note['_type'] # 0 Red, 1 Blue
-
+	
+	new_note.translate(positions[note['_lineLayer']][note['_lineIndex']])
+	
 	match current_direction:
 		NOTE_DIRECTION.Up:
 			new_note.rotate_z(deg2rad(180.0))
@@ -77,7 +79,7 @@ func spawn_note(note):
 	if current_direction != NOTE_DIRECTION.All:
 		new_note.get_node('AllDirectionsNote').visible = false
 	
-	new_note.translate(positions[note['_lineLayer']][note['_lineIndex']])
+	
 	
 
 func create_batch(batch):
