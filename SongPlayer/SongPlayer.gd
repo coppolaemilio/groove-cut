@@ -19,8 +19,13 @@ var positions = [
 	[Vector3(-ns,ns,0), Vector3(0,ns,0), Vector3(ns,ns,0), Vector3(ns*2,ns,0)]
 ]
 
+# Note
 var Note = load("res://GameProps/Note.tscn")
-var current_song = "./MapExampleCalibration/EasyStandard.dat"
+var RedMaterial = load("res://Theme/Materials/Red.tres")
+var BlueMaterial = load("res://Theme/Materials/Blue.tres")
+
+# Song
+var current_song = "./MapExampleCalibration/Expert.dat"
 var song_data = {}
 var notes_on_track = []
 var batches = []
@@ -52,7 +57,6 @@ func spawn_note(note):
 	get_parent().get_node('Notes').add_child(new_note)
 	#var current_direction = randi()%NOTE_DIRECTION.size()
 	var current_direction = int(note['_cutDirection'])
-	var type = note['_type'] # 0 Red, 1 Blue
 	
 	new_note.translate(positions[note['_lineLayer']][note['_lineIndex']])
 	
@@ -79,6 +83,13 @@ func spawn_note(note):
 	if current_direction != NOTE_DIRECTION.All:
 		new_note.get_node('AllDirectionsNote').visible = false
 	
+	if note['_type'] == 0: # 0 Red, 1 Blue
+		new_note.get_node('DirectionalNote/CSGBox').material_override = RedMaterial
+		new_note.get_node('AllDirectionsNote/CSGBox').material_override = RedMaterial
+	else:
+		new_note.get_node('DirectionalNote/CSGBox').material_override = BlueMaterial
+		new_note.get_node('AllDirectionsNote/CSGBox').material_override = BlueMaterial
+	
 	
 	
 
@@ -88,5 +99,6 @@ func create_batch(batch):
 	playing_index += 1
 
 func _on_Timer_timeout():
-	print('playing_index: ', playing_index)
-	create_batch(batches[playing_index])
+	if batches.size() > playing_index:
+		print('playing_index: ', playing_index)
+		create_batch(batches[playing_index])
