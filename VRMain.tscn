@@ -44,7 +44,7 @@ transform = Transform( 0.892641, 0.0666511, 0.445814, -0.450769, 0.131987, 0.882
 environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.733469, 0, -0.679723, 0, 1, 0, 0.679723, 0, 0.733469, -2.38208, 1.59511, -0.541999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106469, 1.85611, 0.58151 )
 
 [node name="Notes" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52399, -3.88769 )
@@ -54,6 +54,7 @@ script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="SongPlayer"]
 wait_time = 0.5
+autostart = true
 [connection signal="timeout" from="SongPlayer/Timer" to="SongPlayer" method="_on_Timer_timeout"]
 
 [editable path="OVRFirstPerson"]

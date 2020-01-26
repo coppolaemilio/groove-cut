@@ -1,14 +1,14 @@
 extends Node
 
 enum NOTE_DIRECTION {
-	Down,
 	Up,
+	Down,
 	Left,
 	Right,
-	DownLeft,
-	DownRight,
 	UpLeft,
 	UpRight,
+	DownLeft,
+	DownRight,
 	All
 }
 
@@ -24,9 +24,10 @@ var positions = [
 var Note = load("res://GameProps/Note.tscn")
 var current_song = "./MapExampleCalibration/EasyStandard.dat"
 var song_data = {}
-var note_index = 0
 var notes_on_track = []
 var batches = []
+
+var playing_index = 0
 
 func _ready():
 	var song_data = global.read_json_file(current_song)
@@ -34,22 +35,26 @@ func _ready():
 	var current_batch = []
 	
 	for note in song_data['_notes']:
-		if note['_time'] != batch_index:
+		if note['_time'] == batch_index:
+			current_batch.append(note)
+		else:
 			batches.append(current_batch)
 			current_batch = []
 			batch_index = note['_time']
-			print(batch_index)
-		else:
 			current_batch.append(note)
-		print(note)
-		notes_on_track.append(positions[note['_lineLayer']][note['_lineIndex']])
+			print(batch_index)
 	
-	print(batches)
+	for b in batches:
+		print(b)
+	print('[+] Batches size: ', batches.size())
 	#$Timer.start(2)
 
-func _on_Timer_timeout():
+func spawn_note(note):
 	var new_note = Note.instance()
-	var current_direction = randi()%directionEnumSize
+	get_parent().get_node('Notes').add_child(new_note)
+	#var current_direction = randi()%directionEnumSize
+	var current_direction = note['_cutDirection']
+	var type = note['_type'] # 0 Red, 1 Blue
 	
 	match current_direction:
 		NOTE_DIRECTION.Down:
@@ -74,6 +79,14 @@ func _on_Timer_timeout():
 	if current_direction != NOTE_DIRECTION.All:
 		new_note.get_node('AllDirectionsNote').visible = false
 	
-	new_note.translate(notes_on_track[note_index])
-	note_index += 1
-	get_parent().get_node('Notes').add_child(new_note)
+	new_note.translate(positions[note['_lineLayer']][note['_lineIndex']])
+	
+
+func create_batch(batch):
+	for note in batch:
+		spawn_note(note)
+	playing_index += 1
+
+func _on_Timer_timeout():
+	print('playing_index: ', playing_index)
+	create_batch(batches[playing_index])
